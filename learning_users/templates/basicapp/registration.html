@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends "basicapp/base.html" %}
+{% load static %}
+{% block body_block %}
+
+<div class="jumbotron">
+{% if registered %} <!-- Here,'regitered is a key from a dictionary in the views.py file in the function which calls it' -->
+<h1>Thank you for registering!</h1>
+{% else %}
+<h1>Register here</h1>
+<h3>Fill out the form : </h3>
+<form enctype="multipart/form-data" method = "post" action="">
+    {% csrf_token %}
+        {{ user_form.as_p }}<!-- the user_from and the profile_form are going to be mentioned in the dictionsry of the function of the views.py file -->
+        {{ profile_form.as_p }}<!-- the user_from and the profile_form are going to be mentioned in the dictionsry of the function of the views.py file -->
+    <input type="submit" name="" id="" value="Register">
+</form>
+{% endif %}    
+{% endblock %}
+</div>
+
+
+
